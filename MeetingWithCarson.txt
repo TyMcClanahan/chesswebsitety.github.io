@@ -1,0 +1,3 @@
+Meeting With Carson Changes Made
+Number 1: I only had on d3 graph during the meeting so he said I should add more to the website and gave me suggestions as to what would work with the data I have.
+Number 2: I did not have React set up on my table nor did I have any data filters so he told me to get on that.

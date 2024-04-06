@@ -1,0 +1,117 @@
+.backgroundDiv {
+    background-image: url('https://cdn.wallpapersafari.com/80/16/iwqjFy.png');
+    background-repeat: repeat;
+    background-size: 70% auto;
+}
+
+.panelDiv {
+    background-color: #ffffb5de;
+    background-repeat: repeat;
+    background-size: auto;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.contentCenterDiv {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.headerDiv {
+    text-align: center;
+}
+
+.headerDiv a {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+    font-size: 25px;
+}
+
+.headerImageDiv {
+    background-image: url('https://cdn.wallpapersafari.com/58/69/NGjpaD.jpg');
+    background-size: 100% 100%;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.headerImageOutlineDiv {
+    background-color: #ffffb5;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.my_dataviz {
+    margin: 0 auto;
+}
+
+#react-data-table {
+    text-align: center;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    th{
+        border: 2px solid black;
+        padding: 8px;
+    }
+    td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+}
+
+.LeftAlign {
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+    font-style: italic;
+    font-weight: 200;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+i {
+    font-size: 25px;
+}
+
+br {
+    user-select: none;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.gif-container {
+    width: 600px;
+    height: 400px;
+    background-image: url('Assets/MeWhen.gif');
+    display: inline-block;
+    animation: spin 2s infinite linear;
+}
+
+.BACKGROUND {
+    background-color: #ffffa9;
+}
+
+@media screen and (max-width: 699px) {
+    .gif-container {
+        width: 12000px;
+        height: 8000px;
+        animation: spin 5s infinite linear;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    #react-data-table {
+        font-size: 12px;
+    }
+}

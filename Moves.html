@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="default.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="backgroundDiv">
+        <div class="headerImageOutlineDiv">
+            <div class="headerDiv">
+                <div class="headerImageDiv">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+                <h6><a href="Home.html"> Home </a> <i class="fa-solid fa-chess-pawn"></i> <a href="Data.html"> Data </a>
+                    <i class="fa-solid fa-chess-rook"></i> <a href="Graphs.html"> Openings </a> <i
+                        class="fa-solid fa-chess-queen"></i> <a href="moves.html"> Moves </a> <i
+                        class="fa-solid fa-chess-king"></i>
+                    <a href="Conclusion.html"> Conclusion </a>
+                </h6>
+            </div>
+        </div>
+        <div class="panelDiv">
+            <div class="contentCenterDiv">
+                <br>
+                <h1>Moves</h1>
+                <p>This graph shows what the destination square was for every move that both me and my opponent went
+                    for.
+                    The darker the tile is, the more often it is played and the lighter green the less played.
+                    In this graph you can see that my opponents and I are both rather good at taking mid control and
+                    don't do much
+                    piece shuffling in the back.
+                    This also shows that nearly all of my openings that I play as and against have e4, e5, d4, or d5 as
+                    a pawn most
+                    likely early or having it multiple times a game as a capture.
+                    c3, c6, f3, and f6 are most likely knight moves or pawn moves as I enjoy early knight development
+                    into mid as
+                    soon as possible and
+                    having a pawn defend another pawn in mid heavily disincentivises a non-pawn capture which gives a
+                    lot of mid
+                    control in the early game.
+                    This data is rather similar to better player's games that I have seen so it seems the best move is
+                    not where, but when.</p>
+                <br>
+                <h3 class="headerDiv">Heatmap of Move Destinations</h3>
+                <div id="my_dataviz"></div>
+                <br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        // set the dimensions and margins of the graph
+        var margin = { top: 30, right: 30, bottom: 30, left: 320 },
+            width = 970 - margin.left - margin.right,
+            height = 650 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
+        // Labels of row and columns
+        var myGroups = ["A", "B", "C", "D", "E", "F", "G", "H"]
+        var myVars = ["1", "2", "3", "4", "5", "6", "7", "8"]
+
+        // Build X scales and axis:
+        var x = d3.scaleBand()
+            .range([0, width])
+            .domain(myGroups)
+            .padding(0.01);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+
+        // Build X scales and axis:
+        var y = d3.scaleBand()
+            .range([height, 0])
+            .domain(myVars)
+            .padding(0.01);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Build color scale
+        var myColor = d3.scaleLinear()
+            .range(["green", "black"])
+            .domain([1, 2100])
+
+        //Read the data
+        d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function (data) {
+            myData = [
+                { group: 'A', variable: '1', value: '195' },
+                { group: 'A', variable: '2', value: '252' },
+                { group: 'A', variable: '3', value: '511' },
+                { group: 'A', variable: '4', value: '552' },
+                { group: 'A', variable: '5', value: '571' },
+                { group: 'A', variable: '6', value: '507' },
+                { group: 'A', variable: '7', value: '237' },
+                { group: 'A', variable: '8', value: '204' },
+                { group: 'B', variable: '1', value: '285' },
+                { group: 'B', variable: '2', value: '408' },
+                { group: 'B', variable: '3', value: '635' },
+                { group: 'B', variable: '4', value: '874' },
+                { group: 'B', variable: '5', value: '849' },
+                { group: 'B', variable: '6', value: '614' },
+                { group: 'B', variable: '7', value: '396' },
+                { group: 'B', variable: '8', value: '288' },
+                { group: 'C', variable: '1', value: '351' },
+                { group: 'C', variable: '2', value: '497' },
+                { group: 'C', variable: '3', value: '1393' },
+                { group: 'C', variable: '4', value: '1309' },
+                { group: 'C', variable: '5', value: '1200' },
+                { group: 'C', variable: '6', value: '1537' },
+                { group: 'C', variable: '7', value: '459' },
+                { group: 'C', variable: '8', value: '324' },
+                { group: 'D', variable: '1', value: '634' },
+                { group: 'D', variable: '2', value: '845' },
+                { group: 'D', variable: '3', value: '962' },
+                { group: 'D', variable: '4', value: '1795' },
+                { group: 'D', variable: '5', value: '1947' },
+                { group: 'D', variable: '6', value: '1128' },
+                { group: 'D', variable: '7', value: '779' },
+                { group: 'D', variable: '8', value: '632' },
+                { group: 'E', variable: '1', value: '685' },
+                { group: 'E', variable: '2', value: '822' },
+                { group: 'E', variable: '3', value: '928' },
+                { group: 'E', variable: '4', value: '1799' },
+                { group: 'E', variable: '5', value: '2019' },
+                { group: 'E', variable: '6', value: '1088' },
+                { group: 'E', variable: '7', value: '1001' },
+                { group: 'E', variable: '8', value: '615' },
+                { group: 'F', variable: '1', value: '481' },
+                { group: 'F', variable: '2', value: '555' },
+                { group: 'F', variable: '3', value: '1865' },
+                { group: 'F', variable: '4', value: '1000' },
+                { group: 'F', variable: '5', value: '1110' },
+                { group: 'F', variable: '6', value: '1752' },
+                { group: 'F', variable: '7', value: '691' },
+                { group: 'F', variable: '8', value: '485' },
+                { group: 'G', variable: '1', value: '283' },
+                { group: 'G', variable: '2', value: '422' },
+                { group: 'G', variable: '3', value: '702' },
+                { group: 'G', variable: '4', value: '1166' },
+                { group: 'G', variable: '5', value: '1245' },
+                { group: 'G', variable: '6', value: '820' },
+                { group: 'G', variable: '7', value: '515' },
+                { group: 'G', variable: '8', value: '348' },
+                { group: 'H', variable: '1', value: '233' },
+                { group: 'H', variable: '2', value: '306' },
+                { group: 'H', variable: '3', value: '643' },
+                { group: 'H', variable: '4', value: '655' },
+                { group: 'H', variable: '5', value: '709' },
+                { group: 'H', variable: '6', value: '654' },
+                { group: 'H', variable: '7', value: '301' },
+                { group: 'H', variable: '8', value: '271' }
+            ]
+            // create a tooltip
+            var tooltip = d3.select("#my_dataviz")
+                .append("div")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("background-color", "white")
+                .style("border", "solid")
+                .style("border-width", "2px")
+                .style("border-radius", "5px")
+                .style("padding", "5px")
+                .style("text-align", "center")
+                .style("width", "50%")
+                .style("margin", "0 auto")
+
+            // Three function that change the tooltip when user hover / move / leave a cell
+            var mouseover = function (d) {
+                tooltip.style("opacity", 1)
+            }
+            var mousemove = function (d) {
+                tooltip
+                    .html("A piece was moved to this square " + d.value + " times")
+                    .style("left", (d3.mouse(this)[0] + 70) + "px")
+                    .style("top", (d3.mouse(this)[1]) + "px")
+            }
+            var mouseleave = function (d) {
+                tooltip.style("opacity", 0)
+            }
+
+            // add the squares
+            svg.selectAll()
+                .data(myData, function (d) { return d.group + ':' + d.variable; })
+                .enter()
+                .append("rect")
+                .attr("x", function (d) { return x(d.group) })
+                .attr("y", function (d) { return y(d.variable) })
+                .attr("width", x.bandwidth())
+                .attr("height", y.bandwidth())
+                .style("fill", function (d) { return myColor(d.value) })
+                .on("mouseover", mouseover)
+                .on("mousemove", mousemove)
+                .on("mouseleave", mouseleave)
+        })
+
+    </script>
+</body>
+
+</html>

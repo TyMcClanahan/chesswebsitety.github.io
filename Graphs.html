@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="default.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Openings</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="backgroundDiv">
+        <div class="headerImageOutlineDiv">
+            <div class="headerDiv">
+                <div class="headerImageDiv">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+                <h6><a href="Home.html"> Home </a> <i class="fa-solid fa-chess-pawn"></i> <a href="Data.html"> Data </a>
+                    <i class="fa-solid fa-chess-rook"></i> <a href="Graphs.html"> Openings </a> <i
+                        class="fa-solid fa-chess-queen"></i> <a href="moves.html"> Moves </a> <i
+                        class="fa-solid fa-chess-king"></i>
+                    <a href="Conclusion.html"> Conclusion </a>
+                </h6>
+            </div>
+        </div>
+        <div class="panelDiv">
+            <div class="contentCenterDiv">
+                <br>
+                <h1>Openings</h1>
+                <p>Below is a graph of all of the openings that I have played on this website. My most played opening is
+                    the
+                    Stafford Gambit.
+                    This is my most played opening and I have a 63% winrate with this opening because it is my most
+                    studied opening.
+                    I don't have much opening theory memorized for positions outside of the Stafford Gambit.
+                    That is a problem because I only got the Stafford Gambit in 43 of 740 games which is roughly 0.058%
+                    of games.
+                    (30% of my tournament games were Stafford Gambit and I have a 100% winrate with it, I only played 10
+                    tournament games)
+                    This shows that if I had opening preparation for other common openings my winrate would skyrocket as
+                    coming into the midgame with a positional or material advantage is invaluable.
+                    It shows another weakness which is another reason to be hardstuck in my elo.
+                </p>
+
+                <h3>Stafford Gambit</h3>
+                <p>This right here is what I live for. I love the Stafford Gambit. This is one of the most interesting
+                    and agressive chess openings possible for black.
+                    It sacrifices a pawn on the second move for quick development and active piece play. There are so
+                    many moves that seem like they are normal development moves that are just blunders.
+                    For example, 5. d3 Bc5 6. Bg5 Nxe4 7. Bxd8 Bxf2+ 8. Ke2 Bg4#
+                    Another example that is 5. e5 Ne4 6.d3 Bc5 7. dxe4 Bf2+ 8. Kxf2 Qxd1
+                    These and many other lines can come about from such a goated opening.
+                    I guess I should say that the opening is objectivly slightly bad for black with perfect play but I
+                    do not engage in perfect play.
+                </p>
+                <img src="Assets/StaffordGambit.PNG" alt="Stafford Gambit" class="img-fluid d-block mx-auto">
+                <br><br><br>
+                <h3 class="headerDiv">Opening by Number of Times Played</h3>
+                <div id="my_dataviz"></div>
+                <h3>Futher Reading</h3>
+                <p>If you want to learn some traps in this opening line</p>
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/eIecRRl1cfc" title="Top 10 BEST Stafford Gambit Traps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+    <script>
+        var margin = { top: 0, right: 0, bottom: 0, left: 75 },
+            width = 1200 - margin.left - margin.right,
+            height = 1200 - margin.top - margin.bottom,
+            innerRadius = 250,
+            outerRadius = Math.min(width, height) / 2;
+
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
+
+        d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum.csv", function (data) {
+            console.log(data);
+            myData = [
+                { Country: 'Russian Game: Stafford Gambit', Value: '43' },
+                { Country: 'Four Knights Game: Italian Variation', Value: '22' },
+                { Country: 'Philidor Defense', Value: '22' },
+                { Country: 'King\'s Pawn Game: Wayward Queen Attack', Value: '21' },
+                { Country: 'French Defense: Knight Variation', Value: '15' },
+                { Country: 'Englund Gambit', Value: '14' },
+                { Country: 'Russian Game', Value: '14' },
+                { Country: 'Italian Game: Two Knights Defense, Fried Liver Attack', Value: '14' },
+                { Country: 'Italian Game: Two Knights Defense, Polerio Defense', Value: '11' },
+                { Country: 'Englund Gambit Complex: Englund Gambit', Value: '11' },
+                { Country: 'Nimzo-Larsen Attack: Modern Variation', Value: '10' },
+                { Country: 'Modern Defense', Value: '9' },
+                { Country: 'Sicilian Defense: Old Sicilian', Value: '9' },
+                { Country: 'Italian Game: Paris Defense', Value: '9' },
+                { Country: 'Caro-Kann Defense', Value: '8' },
+                { Country: 'Italian Game: Giuoco Pianissimo, Normal', Value: '8' },
+                { Country: 'Italian Game: Anti-Fried Liver Defense', Value: '8' },
+                { Country: 'Pirc Defense', Value: '8' },
+                { Country: 'King\'s Pawn Game: Leonardis Variation', Value: '8' },
+                { Country: 'Russian Game: Italian Variation', Value: '8' },
+                { Country: 'Queen\'s Pawn Game: Chigorin Variation', Value: '8' },
+                { Country: 'Queen\'s Pawn Game', Value: '7' },
+                { Country: 'French Defense: Normal Variation', Value: '7' },
+                { Country: 'Scandinavian Defense: Mieses-Kotroc Variation', Value: '7' },
+                { Country: 'King\'s Pawn Game: Napoleon Attack', Value: '7' },
+                { Country: 'Italian Game: Two Knights Defense, Traxler Counterattack, Bishop Sacrifice Line', Value: '7' },
+                { Country: 'Italian Game: Two Knights Defense', Value: '6' },
+                { Country: 'Owen Defense', Value: '6' },
+                { Country: 'Russian Game: Modern Attack', Value: '6' },
+                { Country: 'Englund Gambit Declined: Reversed Alekhine', Value: '6' },
+                { Country: 'Sicilian Defense: Modern Variations', Value: '6' },
+                { Country: 'Sicilian Defense', Value: '6' },
+                { Country: 'Sicilian Defense: Bowdler Attack', Value: '5' },
+                { Country: 'Van\'t Kruijs Opening', Value: '5' },
+                { Country: 'Queen\'s Pawn Game: Accelerated London System', Value: '5' },
+                { Country: 'King\'s Knight Opening', Value: '5' },
+                { Country: 'English Opening: King\'s English Variation, Reversed Sicilian', Value: '5' },
+                { Country: 'Italian Game: Blackburne-KostiÄ‡ Gambit', Value: '5' },
+                { Country: 'Zukertort Opening: Black Mustang Defense', Value: '5' },
+                { Country: 'Bishop\'s Opening: Berlin Defense', Value: '5' },
+                { Country: 'Caro-Kann Defense: Exchange Variation', Value: '5' },
+                { Country: 'King\'s Pawn Game: Wayward Queen Attack, Kiddie Countergambit', Value: '5' },
+                { Country: 'Englund Gambit Complex Declined', Value: '5' },
+                { Country: 'Zukertort Opening: Tennison Gambit', Value: '5' },
+                { Country: 'Sicilian Defense: French Variation', Value: '5' },
+                { Country: 'Italian Game: Evans Gambit, McDonnell Defense', Value: '4' },
+                { Country: 'Italian Game: Evans Gambit, Harding Variation', Value: '4' },
+                { Country: 'Queen\'s Gambit Declined: Albin Countergambit', Value: '4' },
+                { Country: 'French Defense: Advance Variation', Value: '4' },
+                { Country: 'Vienna Game: Vienna Gambit', Value: '4' },
+                { Country: 'Scotch Game: Schmidt Variation', Value: '4' },
+                { Country: 'Italian Game', Value: '4' },
+                { Country: 'Italian Game: Evans Gambit Declined', Value: '4' },
+                { Country: 'Danish Gambit', Value: '4' },
+                { Country: 'King\'s Pawn Game: Busch-Gass Gambit', Value: '4' },
+                { Country: 'Center Game: Normal Variation', Value: '4' },
+                { Country: 'Blackmar-Diemer Gambit Accepted: Pietrowsky Defense', Value: '4' },
+                { Country: 'Scandinavian Defense: Valencian Variation', Value: '4' },
+                { Country: 'Russian Game: Three Knights Game', Value: '3' },
+                { Country: 'Scandinavian Defense: Main Line', Value: '3' },
+                { Country: 'Queen\'s Pawn Game: Krause Variation', Value: '3' },
+                { Country: 'Hungarian Opening', Value: '3' },
+                { Country: 'French Defense: Franco-Sicilian Defense', Value: '3' },
+                { Country: 'Queen\'s Gambit Accepted: Old Variation', Value: '3' },
+                { Country: 'Blackmar-Diemer Gambit Declined: Vienna Defense', Value: '3' },
+                { Country: 'Vienna Game: Falkbeer Variation', Value: '3' },
+                { Country: 'Sicilian Defense: Smith-Morra Gambit', Value: '3' },
+                { Country: 'Blackmar-Diemer Gambit Accepted: Euwe Defense', Value: '3' },
+                { Country: 'Van Geet Opening: Reversed Nimzowitsch', Value: '3' },
+                { Country: 'King\'s Pawn Game: MacLeod Attack', Value: '3' },
+                { Country: 'Englund Gambit Declined: Reversed French', Value: '3' },
+                { Country: 'Elephant Gambit: Paulsen Countergambit', Value: '3' },
+                { Country: 'Queen\'s Pawn Game: Zukertort Variation', Value: '3' },
+                { Country: 'Four Knights Game', Value: '3' },
+                { Country: 'Sicilian Defense: Staunton-Cochrane Variation', Value: '3' },
+                { Country: 'Bishop\'s Opening: Boden-Kieseritzky Gambit', Value: '3' },
+                { Country: 'Queen\'s Gambit Accepted: Slav Gambit', Value: '3' },
+                { Country: 'Danish Gambit Accepted', Value: '3' },
+                { Country: 'Four Knights Game: Scotch Variation Accepted', Value: '3' },
+                { Country: 'French Defense: Advance Variation, Nimzowitsch System', Value: '3' },
+                { Country: 'Mieses Opening: Reversed Rat', Value: '3' },
+                { Country: 'Italian Game: Bird\'s Attack', Value: '2' },
+                { Country: 'Italian Game: Two Knights Defense, Ponziani-Steinitz Gambit', Value: '2' },
+                { Country: 'Englund Gambit Declined: Reversed Krebs', Value: '2' },
+                { Country: 'Caro-Kann Defense: Advance Variation', Value: '2' },
+                { Country: 'Italian Game: Giuoco Pianissimo, Italian Four Knights Variation', Value: '2' },
+                { Country: 'Blackmar-Diemer Gambit', Value: '2' },
+                { Country: 'Sicilian Defense: Open', Value: '2' },
+                { Country: 'Center Game: Paulsen Attack Variation', Value: '2' },
+                { Country: 'Bishop\'s Opening: Vienna Hybrid', Value: '2' },
+                { Country: 'Zukertort Opening: Ross Gambit', Value: '2' },
+                { Country: 'Philidor Defense: Lopez Countergambit', Value: '2' },
+                { Country: 'French Defense: Exchange Variation', Value: '2' },
+                { Country: 'Queen\'s Pawn Game: Levitsky Attack', Value: '2' },
+                { Country: 'Scotch Game: Scotch Gambit, Dubois RÃ©ti Defense', Value: '2' },
+                { Country: 'Blackmar-Diemer Gambit Accepted', Value: '2' },
+                { Country: 'Queen\'s Gambit Declined: Chigorin Defense, Lazard Gambit', Value: '2' },
+                { Country: 'Nimzowitsch Defense: Williams Variation', Value: '2' },
+                { Country: 'Elephant Gambit', Value: '2' },
+                { Country: 'Blackmar-Diemer Gambit Declined: Weinsbach Defense', Value: '2' },
+                { Country: 'Four Knights Game: Spanish Variation, Classical Variation', Value: '2' },
+                { Country: 'Nimzowitsch Defense: Declined Variation', Value: '2' },
+                { Country: 'Caro-Kann Defense: Advance Variation, Bayonet Attack', Value: '2' },
+                { Country: 'Modern Defense: Three Pawns Attack', Value: '2' },
+                { Country: 'Four Knights Game: Italian Variation, Noa Gambit', Value: '2' },
+                { Country: 'Saragossa Opening', Value: '2' },
+                { Country: 'Blackmar-Diemer Gambit Accepted: Teichmann Defense', Value: '2' },
+                { Country: 'Italian Game: Evans Gambit', Value: '2' },
+                { Country: 'Latvian Gambit Accepted', Value: '2' },
+                { Country: 'Italian Game: Classical Variation, Greco Gambit, Traditional Line', Value: '2' },
+                { Country: 'Alekhine Defense: Krejcik Variation', Value: '2' },
+                { Country: 'Goldsmith Defense', Value: '2' },
+                { Country: 'Italian Game: Two Knights Defense, Knight Attack, Normal Variation', Value: '2' },
+                { Country: 'Italian Game: Two Knights Defense, Modern Bishop\'s Opening', Value: '2' },
+                { Country: 'Crab Opening', Value: '2' },
+                { Country: 'Italian Game: Two Knights Defense, Knight Attack', Value: '2' },
+                { Country: 'Bird Opening: Dutch Variation', Value: '2' },
+                { Country: 'Italian Game: Evans Gambit, Pierce Defense', Value: '2' },
+                { Country: 'Bishop\'s Opening', Value: '2' },
+                { Country: 'Alekhine Defense', Value: '2' },
+                { Country: 'Queen\'s Gambit Accepted: Central Variation, Greco Variation', Value: '2' },
+                { Country: 'Scandinavian Defense', Value: '2' },
+                { Country: 'Center Game', Value: '2' },
+                { Country: 'Four Knights Game: Spanish Variation, Ranken Variation', Value: '2' },
+                { Country: 'King\'s Gambit Accepted: MacLeod Defense', Value: '2' },
+                { Country: '?', Value: '2' },
+                { Country: 'Alekhine Defense: Two Pawns Attack, Lasker Variation', Value: '1' },
+                { Country: 'Sicilian Defense: Smith-Morra Gambit Accepted, Fianchetto Defense', Value: '1' },
+                { Country: 'Sicilian Defense: Morphy Gambit, Andreaschek Gambit', Value: '1' },
+                { Country: 'King\'s Gambit Accepted: Gianutio Countergambit', Value: '1' },
+                { Country: 'Nimzowitsch Defense: Scandinavian Variation, Exchange Variation, Marshall Gambit', Value: '1' },
+                { Country: 'Zukertort Opening: The Walrus', Value: '1' },
+                { Country: 'Queen\'s Gambit Declined: Albin Countergambit, Tartakower Defense', Value: '1' },
+                { Country: 'Italian Game: Two Knights Defense, Fritz Variation', Value: '1' },
+                { Country: 'Polish Opening', Value: '1' },
+                { Country: 'Caro-Kann Defense: Advance Variation, Short Variation', Value: '1' },
+                { Country: 'Nimzowitsch Defense: Pseudo-Spanish Variation', Value: '1' },
+                { Country: 'Mikenas Defense', Value: '1' },
+                { Country: 'English Opening: King\'s English Variation, Four Knights Variation, Flexible Line', Value: '1' },
+                { Country: 'Caro-Kann Defense: Accelerated Panov Attack', Value: '1' },
+                { Country: 'Center Game: von der Lasa Gambit', Value: '1' },
+                { Country: 'Nimzowitsch Defense: Scandinavian Variation, Exchange Variation', Value: '1' },
+                { Country: 'Four Knights Game: Scotch Variation', Value: '1' },
+                { Country: 'Sicilian Defense: Franco-Sicilian Variation', Value: '1' },
+                { Country: 'Queen\'s Gambit Declined: Austrian Defense', Value: '1' },
+                { Country: 'Blackmar-Diemer Gambit Accepted: Ziegler Defense', Value: '1' },
+                { Country: 'Italian Game: Two Knights Defense, Kloss Gambit', Value: '1' },
+                { Country: 'Queen\'s Pawn Game: Chigorin Variation, Irish Gambit', Value: '1' },
+                { Country: 'Ware Defense', Value: '1' },
+                { Country: 'Italian Game: Evans Gambit, Anderssen Variation', Value: '1' },
+                { Country: 'Modern Defense: Mongredien Defense, with Nf3', Value: '1' },
+                { Country: 'Queen\'s Gambit Accepted: Central Variation, McDonnell Defense', Value: '1' },
+                { Country: 'Zukertort Opening: Lemberger Gambit', Value: '1' },
+                { Country: 'Sicilian Defense: LÃ¶wenthal Variation', Value: '1' },
+                { Country: 'Philidor Defense: Lion Variation', Value: '1' },
+                { Country: 'Benoni Defense: French Benoni', Value: '1' },
+                { Country: 'Blackmar-Diemer Gambit: Zeller Defense', Value: '1' },
+                { Country: 'Queen\'s Gambit Declined: Albin Countergambit, Normal Line', Value: '1' },
+                { Country: 'Italian Game: Scotch Gambit, de Riviere Defense', Value: '1' },
+                { Country: 'Owen Defense: Hekili-Loa Gambit', Value: '1' },
+                { Country: 'Queen\'s Pawn Game: Symmetrical Variation, Pseudo-Catalan', Value: '1' },
+                { Country: 'Owen Defense: Smith Gambit', Value: '1' },
+                { Country: 'Queen\'s Pawn Game: Mason Attack', Value: '1' },
+                { Country: 'Blackmar-Diemer Gambit: Lemberger Countergambit, Endgame Variation', Value: '1' },
+                { Country: 'Italian Game: Rousseau Gambit', Value: '1' },
+                { Country: 'Russian Game: Nimzowitsch Attack', Value: '1' },
+                { Country: 'Italian Game: Evans Gambit, McDonnell Defense, Main Line', Value: '1' },
+                { Country: 'Grob Opening: Grob Gambit, Fritz Gambit', Value: '1' },
+                { Country: 'King\'s Pawn Game: Damiano Defense', Value: '1' },
+                { Country: 'Center Game: Kieseritzky Variation', Value: '1' },
+                { Country: 'Bird Opening: From\'s Gambit', Value: '1' },
+                { Country: 'Sicilian Defense: Katalimov Variation', Value: '1' },
+                { Country: 'Richter-Veresov Attack', Value: '1' },
+                { Country: 'Alekhine Defense: Brooklyn Variation', Value: '1' },
+                { Country: 'Hungarian Opening: Reversed Alekhine', Value: '1' },
+                { Country: 'Queen\'s Gambit Declined: Albin Countergambit, Lasker Trap', Value: '1' },
+                { Country: 'French Defense: Exchange Variation, Monte Carlo Variation', Value: '1' },
+                { Country: 'Barnes Defense', Value: '1' },
+                { Country: 'Rapport-Jobava System', Value: '1' },
+                { Country: 'King\'s Pawn Game', Value: '1' },
+                { Country: 'Blackmar-Diemer Gambit: Netherlands Variation', Value: '1' },
+                { Country: 'Pterodactyl Defense: Sicilian, Rhamphorhynchus', Value: '1' },
+                { Country: 'Queen\'s Gambit Accepted', Value: '1' },
+                { Country: 'Italian Game: Classical Variation', Value: '1' },
+                { Country: 'Queen\'s Gambit Accepted: Normal Variation', Value: '1' },
+                { Country: 'Vienna Game: Stanley Variation', Value: '1' },
+                { Country: 'Ruy Lopez: Morphy Defense', Value: '1' },
+                { Country: 'Duras Gambit', Value: '1' },
+                { Country: 'King\'s Gambit Accepted: Modern Defense', Value: '1' },
+                { Country: 'French Defense: Steinitz Attack', Value: '1' },
+                { Country: 'Queen\'s Gambit Declined', Value: '1' },
+                { Country: 'Blackmar-Diemer Gambit Declined: Lamb Defense', Value: '1' },
+                { Country: 'Modern Defense: Two Knights Variation', Value: '1' },
+                { Country: 'Carr Defense', Value: '1' },
+                { Country: 'Nimzowitsch Defense: Breyer Variation', Value: '1' },
+                { Country: 'Italian Game: Hungarian Defense', Value: '1' },
+                { Country: 'King\'s Pawn Game: King\'s Head Opening', Value: '1' },
+                { Country: 'St. George Defense: Zilbermints Gambit', Value: '1' },
+                { Country: 'Englund Gambit Complex: Hartlaub-Charlick Gambit', Value: '1' },
+                { Country: 'Italian Game: Evans Gambit, Slow Variation', Value: '1' },
+                { Country: 'Polish Opening: Bugayev Attack', Value: '1' },
+                { Country: 'Nimzo-Larsen Attack: Classical Variation', Value: '1' },
+                { Country: 'Caro-Kann Defense: Advance Variation, Botvinnik-Carls Defense', Value: '1' },
+                { Country: 'Zukertort Opening: Reversed Mexican Defense', Value: '1' },
+                { Country: 'Queen\'s Pawn Game: Modern Defense', Value: '1' },
+                { Country: 'Sicilian Defense: McDonnell Attack', Value: '1' },
+                { Country: 'Gunderam Defense', Value: '1' },
+                { Country: 'King\'s Gambit Accepted: Rosentreter Gambit', Value: '1' },
+                { Country: 'Barnes Opening', Value: '1' },
+                { Country: 'Italian Game: Two Knights Defense, Ulvestad Variation', Value: '1' },
+                { Country: 'Nimzowitsch Defense: Franco-Nimzowitsch Variation', Value: '1' },
+                { Country: 'King\'s Gambit Accepted: Polerio Gambit', Value: '1' },
+                { Country: 'Vienna Gambit, with Max Lange Defense: Knight Variation', Value: '1' },
+                { Country: 'King\'s Gambit Accepted: Schallopp Defense', Value: '1' },
+                { Country: 'Queen\'s Pawn Game: Colle System', Value: '1' },
+                { Country: 'Bishop\'s Opening: Khan Gambit', Value: '1' },
+                { Country: 'King\'s Gambit Accepted: King\'s Knight\'s Gambit', Value: '1' },
+                { Country: 'Italian Game: Two Knights Defense, Traxler Counterattack, Knight Sacrifice Line', Value: '1' },
+                { Country: 'King\'s Gambit Accepted', Value: '1' },
+                { Country: 'Creepy Crawly Formation: Classical Defense', Value: '1' },
+                { Country: 'Nimzowitsch Defense', Value: '1' },
+                { Country: 'Latvian Gambit', Value: '1' },
+                { Country: 'Indian Defense: Knights Variation', Value: '1' },
+                { Country: 'King\'s Pawn Game: McConnell Defense', Value: '1' },
+                { Country: 'English Opening: King\'s English Variation, Reversed Closed Sicilian', Value: '1' },
+                { Country: 'Zukertort Opening: Wade Defense', Value: '1' },
+                { Country: 'French Defense', Value: '1' },
+                { Country: 'Four Knights Game: Spanish Variation', Value: '1' },
+                { Country: 'Modern Defense: Pseudo-Austrian Attack', Value: '1' },
+                { Country: 'English Opening: King\'s English Variation', Value: '1' },
+                { Country: 'King\'s Indian Attack', Value: '1' },
+                { Country: 'Scotch Game', Value: '1' },
+                { Country: 'Ruy Lopez: Steinitz Defense', Value: '1' },
+                { Country: 'Bishop\'s Opening: Philidor Counterattack', Value: '1' },
+                { Country: 'Three Knights Opening', Value: '1' },
+                { Country: 'Horwitz Defense', Value: '1' },
+                { Country: 'Italian Game: Giuoco Piano', Value: '1' },
+                { Country: 'French Defense: La Bourdonnais Variation', Value: '1' },
+                { Country: 'Bird Opening', Value: '1' }
+            ]
+
+            // Scales
+            var x = d3.scaleBand()
+                .range([0, 2 * Math.PI])
+                .align(0)
+                .domain(myData.map(function (d) { return d.Country; }));
+            var y = d3.scaleRadial()
+                .range([innerRadius, outerRadius])
+                .domain([0, 14000]);
+
+            // Add the bars
+            svg.append("g")
+                .selectAll("path")
+                .data(myData)
+                .enter()
+                .append("path")
+                .attr("fill", "black")
+                .attr("d", d3.arc()
+                    .innerRadius(innerRadius)
+                    .outerRadius(function (d) { return y(d['Value'] * - 80); })
+                    .startAngle(function (d) { return x(d.Country); })
+                    .endAngle(function (d) { return x(d.Country) + x.bandwidth(); })
+                    .padAngle(0)
+                    .padRadius(innerRadius))
+
+            svg.append("g")
+                .selectAll("g")
+                .data(myData)
+                .enter()
+                .append("g")
+                .attr("text-anchor", function (d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
+                .attr("transform", function (d) { return "rotate(" + ((x(d.Country) + x.bandwidth() / 2) * 180 / Math.PI - 90) + ")" + "translate(" + (y(d['Value']) + 10) + ",0)"; })
+                .append("text")
+                .text(function (d) { return (d.Country) })
+                .attr("transform", function (d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
+                .style("font-size", "10px")
+                .attr("alignment-baseline", "middle")
+        });
+
+    </script>
+</body>
+
+</html>

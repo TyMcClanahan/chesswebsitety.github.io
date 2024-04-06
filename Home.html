@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="default.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="backgroundDiv">
+        <div class="headerImageOutlineDiv">
+            <div class="headerDiv">
+                <div class="headerImageDiv">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+                <h6><a href="Home.html"> Home </a> <i class="fa-solid fa-chess-pawn"></i> <a href="Data.html"> Data </a>
+                    <i class="fa-solid fa-chess-rook"></i> <a href="Graphs.html"> Openings </a> <i
+                        class="fa-solid fa-chess-queen"></i> <a href="moves.html"> Moves </a> <i
+                        class="fa-solid fa-chess-king"></i>
+                    <a href="Conclusion.html"> Conclusion </a>
+                </h6>
+            </div>
+        </div>
+        <div class="panelDiv">
+            <div class="contentCenterDiv">
+                <br>
+                <h1>Home</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <div class="BACKGROUND">
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-6">
+                                            <div class="BACKGROUND">
+                                                <h3>What is chess?</h3>
+                                                <p>For those unaware, chess is a board game was made over 15 centuries
+                                                    ago
+                                                    and is still played to this
+                                                    day.
+                                                    There is an absurd amount of depth to a game where the rules can be
+                                                    explained in 60 seconds.
+                                                    The goal is to kill the opponent's king without losing yours first.
+                                                    This is done by moving one piece per turn and each of the six pieces
+                                                    have a different movement
+                                                    pattern.
+                                                    All of this culminates to a highly complex and competitive game that
+                                                    will live on as one of greatest
+                                                    games
+                                                    of
+                                                    all time</p>
+                                                <br>
+                                                <h3>What is Lichess.org?</h3>
+                                                <p>As phenomenal as a game as chess is, it is impossible to always have
+                                                    someone to play with over the
+                                                    board.
+                                                    This is where online chess comes into play, within seconds you can
+                                                    be
+                                                    playing against someone of
+                                                    nearly
+                                                    equal
+                                                    skill level to you anywhere on the globe.
+                                                    There are two main competitors for chess websites these are
+                                                    chess.com
+                                                    and lichess.org.
+                                                    Both are free and great avenues for playing chess but there are a
+                                                    fair
+                                                    amount of premuim features on
+                                                    chess.com
+                                                    that are free on lichess.org like Stockfish Analysis, Unlimited
+                                                    Puzzles,
+                                                    and Lessons.
+                                                    The general consensus is that Lichess is better in the chess
+                                                    community
+                                                    which is why it is my chess
+                                                    website of choice</p>
+                                                <br>
+                                            </div>
+                                        </td>
+
+                                        <td class="col-md-6">
+                                            <div class="BACKGROUND">
+                                                <h3>How were these stats collected?</h3>
+                                                <p>Lichess has a cool feature where it stores every game that you have
+                                                    played on the website
+                                                    These games can all be exported as a PGN which Excel takes and can
+                                                    interpret as a CSV.
+                                                    This allowed for data on all of my chess games to be easily
+                                                    accessible
+                                                    and this is how I collected
+                                                    all the data for this website.</p>
+                                                <br>
+                                                <h3>Why have you made this website</h3>
+                                                <p>This website was made to scientifically prove that I have not
+                                                    improved in
+                                                    chess at all over
+                                                    approximately 4 years of games.
+                                                    My first game on Lichess was on March 19th, 2020 which was 45 months
+                                                    ago
+                                                    from the making of this
+                                                    website.
+                                                    I was 15 at the time and was rated 1500.
+                                                    740 games later, 49,339 chess moves made, and a high school diploma
+                                                    under my belt, I am currently
+                                                    rated
+                                                    1541.
+                                                    Why then, after so many hours of dedicated practice am I still
+                                                    hardstuck
+                                                    and titleless.
+                                                    Not to say that 1541 isn't great because it puts me in the top
+                                                    22.87% of
+                                                    chess players according to
+                                                    <a
+                                                        href="https://chessgrandmonkey.com/chess-rating-percentile-calculator-graph/">some
+                                                        random website
+                                                        that I
+                                                        found.</a>
+                                                    Below is a graph of my Elo over those couple of games.
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <h3 class="headerDiv">My Elo by Number of Games</h3>
+                <div id="my_dataviz"></div>
+                <br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+    <script>
+        // set the dimensions and margins of the graph
+        var margin = { top: 10, right: 30, bottom: 40, left: 100 },
+            width = 1300 - margin.left - margin.right,
+            height = 7000 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
+        // Parse the Data
+        d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function (data) {
+            MyData = [
+                { Country: '1', Value: '1500' },
+                { Country: '2', Value: '1277' },
+                { Country: '3', Value: '1500' },
+                { Country: '4', Value: '1126' },
+                { Country: '5', Value: '1094' },
+                { Country: '6', Value: '1156' },
+                { Country: '7', Value: '1500' },
+                { Country: '8', Value: '1629' },
+                { Country: '9', Value: '1437' },
+                { Country: '10', Value: '1219' },
+                { Country: '11', Value: '1189' },
+                { Country: '12', Value: '1180' },
+                { Country: '13', Value: '1500' },
+                { Country: '14', Value: '1419' },
+                { Country: '15', Value: '1277' },
+                { Country: '16', Value: '1246' },
+                { Country: '17', Value: '1291' },
+                { Country: '18', Value: '1283' },
+                { Country: '19', Value: '1206' },
+                { Country: '20', Value: '1500' },
+                { Country: '21', Value: '1288' },
+                { Country: '22', Value: '1368' },
+                { Country: '23', Value: '1338' },
+                { Country: '24', Value: '1397' },
+                { Country: '25', Value: '1310' },
+                { Country: '26', Value: '1500' },
+                { Country: '27', Value: '1256' },
+                { Country: '28', Value: '1200' },
+                { Country: '29', Value: '1251' },
+                { Country: '30', Value: '1354' },
+                { Country: '31', Value: '1500' },
+                { Country: '32', Value: '1621' },
+                { Country: '33', Value: '1222' },
+                { Country: '34', Value: '1307' },
+                { Country: '35', Value: '1343' },
+                { Country: '36', Value: '1410' },
+                { Country: '37', Value: '1425' },
+                { Country: '38', Value: '1334' },
+                { Country: '39', Value: '1064' },
+                { Country: '40', Value: '1231' },
+                { Country: '41', Value: '1356' },
+                { Country: '42', Value: '1283' },
+                { Country: '43', Value: '1336' },
+                { Country: '44', Value: '1427' },
+                { Country: '45', Value: '1322' },
+                { Country: '46', Value: '1216' },
+                { Country: '47', Value: '1380' },
+                { Country: '48', Value: '1330' },
+                { Country: '49', Value: '1369' },
+                { Country: '50', Value: '1329' },
+                { Country: '51', Value: '1363' },
+                { Country: '52', Value: '1329' },
+                { Country: '53', Value: '1299' },
+                { Country: '54', Value: '1277' },
+                { Country: '55', Value: '1276' },
+                { Country: '56', Value: '1152' },
+                { Country: '57', Value: '1088' },
+                { Country: '58', Value: '1144' },
+                { Country: '59', Value: '1108' },
+                { Country: '60', Value: '1165' },
+                { Country: '61', Value: '1196' },
+                { Country: '62', Value: '1233' },
+                { Country: '63', Value: '1261' },
+                { Country: '64', Value: '1295' },
+                { Country: '65', Value: '1329' },
+                { Country: '66', Value: '1358' },
+                { Country: '67', Value: '1340' },
+                { Country: '68', Value: '1318' },
+                { Country: '69', Value: '1303' },
+                { Country: '70', Value: '1316' },
+                { Country: '71', Value: '1335' },
+                { Country: '72', Value: '1353' },
+                { Country: '73', Value: '1365' },
+                { Country: '74', Value: '1381' },
+                { Country: '75', Value: '1364' },
+                { Country: '76', Value: '1375' },
+                { Country: '77', Value: '1389' },
+                { Country: '78', Value: '1398' },
+                { Country: '79', Value: '1410' },
+                { Country: '80', Value: '1424' },
+                { Country: '81', Value: '1432' },
+                { Country: '82', Value: '1439' },
+                { Country: '83', Value: '1451' },
+                { Country: '84', Value: '1440' },
+                { Country: '85', Value: '1299' },
+                { Country: '86', Value: '1319' },
+                { Country: '87', Value: '1341' },
+                { Country: '88', Value: '1362' },
+                { Country: '89', Value: '1460' },
+                { Country: '90', Value: '1432' },
+                { Country: '91', Value: '1445' },
+                { Country: '92', Value: '1433' },
+                { Country: '93', Value: '1423' },
+                { Country: '94', Value: '1432' },
+                { Country: '95', Value: '1423' },
+                { Country: '96', Value: '1269' },
+                { Country: '97', Value: '906' },
+                { Country: '98', Value: '832' },
+                { Country: '99', Value: '819' },
+                { Country: '100', Value: '813' },
+                { Country: '101', Value: '785' },
+                { Country: '102', Value: '768' },
+                { Country: '103', Value: '932' },
+                { Country: '104', Value: '1435' },
+                { Country: '105', Value: '1380' },
+                { Country: '106', Value: '1396' },
+                { Country: '107', Value: '1380' },
+                { Country: '108', Value: '1392' },
+                { Country: '109', Value: '1377' },
+                { Country: '110', Value: '1390' },
+                { Country: '111', Value: '1407' },
+                { Country: '112', Value: '1393' },
+                { Country: '113', Value: '1433' },
+                { Country: '114', Value: '1426' },
+                { Country: '115', Value: '1434' },
+                { Country: '116', Value: '1424' },
+                { Country: '117', Value: '1415' },
+                { Country: '118', Value: '1407' },
+                { Country: '119', Value: '1398' },
+                { Country: '120', Value: '1407' },
+                { Country: '121', Value: '1401' },
+                { Country: '122', Value: '1394' },
+                { Country: '123', Value: '1402' },
+                { Country: '124', Value: '1395' },
+                { Country: '125', Value: '1403' },
+                { Country: '126', Value: '1391' },
+                { Country: '127', Value: '1403' },
+                { Country: '128', Value: '1392' },
+                { Country: '129', Value: '1403' },
+                { Country: '130', Value: '1390' },
+                { Country: '131', Value: '1503' },
+                { Country: '132', Value: '1379' },
+                { Country: '133', Value: '1389' },
+                { Country: '134', Value: '1378' },
+                { Country: '135', Value: '1401' },
+                { Country: '136', Value: '1410' },
+                { Country: '137', Value: '1402' },
+                { Country: '138', Value: '1410' },
+                { Country: '139', Value: '1417' },
+                { Country: '140', Value: '1410' },
+                { Country: '141', Value: '1387' },
+                { Country: '142', Value: '1398' },
+                { Country: '143', Value: '1387' },
+                { Country: '144', Value: '1398' },
+                { Country: '145', Value: '1389' },
+                { Country: '146', Value: '1398' },
+                { Country: '147', Value: '1389' },
+                { Country: '148', Value: '1380' },
+                { Country: '149', Value: '1389' },
+                { Country: '150', Value: '1381' },
+                { Country: '151', Value: '1388' },
+                { Country: '152', Value: '1381' },
+                { Country: '153', Value: '1375' },
+                { Country: '154', Value: '1367' },
+                { Country: '155', Value: '1361' },
+                { Country: '156', Value: '1411' },
+                { Country: '157', Value: '1366' },
+                { Country: '158', Value: '1410' },
+                { Country: '159', Value: '1403' },
+                { Country: '160', Value: '1397' },
+                { Country: '161', Value: '1359' },
+                { Country: '162', Value: '1352' },
+                { Country: '163', Value: '1404' },
+                { Country: '164', Value: '1399' },
+                { Country: '165', Value: '1352' },
+                { Country: '166', Value: '1351' },
+                { Country: '167', Value: '1405' },
+                { Country: '168', Value: '1356' },
+                { Country: '169', Value: '1411' },
+                { Country: '170', Value: '1404' },
+                { Country: '171', Value: '1398' },
+                { Country: '172', Value: '1392' },
+                { Country: '173', Value: '1387' },
+                { Country: '174', Value: '1350' },
+                { Country: '175', Value: '1394' },
+                { Country: '176', Value: '1388' },
+                { Country: '177', Value: '1393' },
+                { Country: '178', Value: '1399' },
+                { Country: '179', Value: '1405' },
+                { Country: '180', Value: '1404' },
+                { Country: '181', Value: '1410' },
+                { Country: '182', Value: '1404' },
+                { Country: '183', Value: '1410' },
+                { Country: '184', Value: '1416' },
+                { Country: '185', Value: '1410' },
+                { Country: '186', Value: '1417' },
+                { Country: '187', Value: '1422' },
+                { Country: '188', Value: '1416' },
+                { Country: '189', Value: '1422' },
+                { Country: '190', Value: '1416' },
+                { Country: '191', Value: '1411' },
+                { Country: '192', Value: '1405' },
+                { Country: '193', Value: '1357' },
+                { Country: '194', Value: '1365' },
+                { Country: '195', Value: '1358' },
+                { Country: '196', Value: '1364' },
+                { Country: '197', Value: '1358' },
+                { Country: '198', Value: '1410' },
+                { Country: '199', Value: '1404' },
+                { Country: '200', Value: '1467' },
+                { Country: '201', Value: '1358' },
+                { Country: '202', Value: '1352' },
+                { Country: '203', Value: '1410' },
+                { Country: '204', Value: '1416' },
+                { Country: '205', Value: '1358' },
+                { Country: '206', Value: '917' },
+                { Country: '207', Value: '958' },
+                { Country: '208', Value: '942' },
+                { Country: '209', Value: '1364' },
+                { Country: '210', Value: '1358' },
+                { Country: '211', Value: '1364' },
+                { Country: '212', Value: '1421' },
+                { Country: '213', Value: '1438' },
+                { Country: '214', Value: '1364' },
+                { Country: '215', Value: '1428' },
+                { Country: '216', Value: '1370' },
+                { Country: '217', Value: '1366' },
+                { Country: '218', Value: '1361' },
+                { Country: '219', Value: '1365' },
+                { Country: '220', Value: '1370' },
+                { Country: '221', Value: '1365' },
+                { Country: '222', Value: '1371' },
+                { Country: '223', Value: '1375' },
+                { Country: '224', Value: '1380' },
+                { Country: '225', Value: '1374' },
+                { Country: '226', Value: '1380' },
+                { Country: '227', Value: '1376' },
+                { Country: '228', Value: '1382' },
+                { Country: '229', Value: '1434' },
+                { Country: '230', Value: '1440' },
+                { Country: '231', Value: '1434' },
+                { Country: '232', Value: '1388' },
+                { Country: '233', Value: '1383' },
+                { Country: '234', Value: '1439' },
+                { Country: '235', Value: '1445' },
+                { Country: '236', Value: '1451' },
+                { Country: '237', Value: '1457' },
+                { Country: '238', Value: '1463' },
+                { Country: '239', Value: '1459' },
+                { Country: '240', Value: '1465' },
+                { Country: '241', Value: '1459' },
+                { Country: '242', Value: '1454' },
+                { Country: '243', Value: '1448' },
+                { Country: '244', Value: '1378' },
+                { Country: '245', Value: '1372' },
+                { Country: '246', Value: '1378' },
+                { Country: '247', Value: '1372' },
+                { Country: '248', Value: '1367' },
+                { Country: '249', Value: '1372' },
+                { Country: '250', Value: '1374' },
+                { Country: '251', Value: '1381' },
+                { Country: '252', Value: '1375' },
+                { Country: '253', Value: '1368' },
+                { Country: '254', Value: '1363' },
+                { Country: '255', Value: '1370' },
+                { Country: '256', Value: '1374' },
+                { Country: '257', Value: '1380' },
+                { Country: '258', Value: '1375' },
+                { Country: '259', Value: '1380' },
+                { Country: '260', Value: '1375' },
+                { Country: '261', Value: '1454' },
+                { Country: '262', Value: '1448' },
+                { Country: '263', Value: '1454' },
+                { Country: '264', Value: '1449' },
+                { Country: '265', Value: '1441' },
+                { Country: '266', Value: '1447' },
+                { Country: '267', Value: '1441' },
+                { Country: '268', Value: '1435' },
+                { Country: '269', Value: '1441' },
+                { Country: '270', Value: '1435' },
+                { Country: '271', Value: '1440' },
+                { Country: '272', Value: '1447' },
+                { Country: '273', Value: '1454' },
+                { Country: '274', Value: '1447' },
+                { Country: '275', Value: '1454' },
+                { Country: '276', Value: '1458' },
+                { Country: '277', Value: '1463' },
+                { Country: '278', Value: '1458' },
+                { Country: '279', Value: '1459' },
+                { Country: '280', Value: '1452' },
+                { Country: '281', Value: '1448' },
+                { Country: '282', Value: '1443' },
+                { Country: '283', Value: '1437' },
+                { Country: '284', Value: '1431' },
+                { Country: '285', Value: '1426' },
+                { Country: '286', Value: '1419' },
+                { Country: '287', Value: '1413' },
+                { Country: '288', Value: '1369' },
+                { Country: '289', Value: '1419' },
+                { Country: '290', Value: '1413' },
+                { Country: '291', Value: '1407' },
+                { Country: '292', Value: '1415' },
+                { Country: '293', Value: '1418' },
+                { Country: '294', Value: '1424' },
+                { Country: '295', Value: '1425' },
+                { Country: '296', Value: '1431' },
+                { Country: '297', Value: '972' },
+                { Country: '298', Value: '1363' },
+                { Country: '299', Value: '1431' },
+                { Country: '300', Value: '1425' },
+                { Country: '301', Value: '1420' },
+                { Country: '302', Value: '1356' },
+                { Country: '303', Value: '1349' },
+                { Country: '304', Value: '1343' },
+                { Country: '305', Value: '1351' },
+                { Country: '306', Value: '1344' },
+                { Country: '307', Value: '1351' },
+                { Country: '308', Value: '1414' },
+                { Country: '309', Value: '1408' },
+                { Country: '310', Value: '1402' },
+                { Country: '311', Value: '1358' },
+                { Country: '312', Value: '1351' },
+                { Country: '313', Value: '1358' },
+                { Country: '314', Value: '1365' },
+                { Country: '315', Value: '1371' },
+                { Country: '316', Value: '1377' },
+                { Country: '317', Value: '1383' },
+                { Country: '318', Value: '1378' },
+                { Country: '319', Value: '1383' },
+                { Country: '320', Value: '1390' },
+                { Country: '321', Value: '1385' },
+                { Country: '322', Value: '1408' },
+                { Country: '323', Value: '1415' },
+                { Country: '324', Value: '1408' },
+                { Country: '325', Value: '1412' },
+                { Country: '326', Value: '1418' },
+                { Country: '327', Value: '1413' },
+                { Country: '328', Value: '1417' },
+                { Country: '329', Value: '1423' },
+                { Country: '330', Value: '1419' },
+                { Country: '331', Value: '1413' },
+                { Country: '332', Value: '1417' },
+                { Country: '333', Value: '1379' },
+                { Country: '334', Value: '1386' },
+                { Country: '335', Value: '1381' },
+                { Country: '336', Value: '1411' },
+                { Country: '337', Value: '1406' },
+                { Country: '338', Value: '1400' },
+                { Country: '339', Value: '1405' },
+                { Country: '340', Value: '1411' },
+                { Country: '341', Value: '1405' },
+                { Country: '342', Value: '1376' },
+                { Country: '343', Value: '1399' },
+                { Country: '344', Value: '1392' },
+                { Country: '345', Value: '1397' },
+                { Country: '346', Value: '1403' },
+                { Country: '347', Value: '1398' },
+                { Country: '348', Value: '1404' },
+                { Country: '349', Value: '1383' },
+                { Country: '350', Value: '1387' },
+                { Country: '351', Value: '1393' },
+                { Country: '352', Value: '1409' },
+                { Country: '353', Value: '1415' },
+                { Country: '354', Value: '1409' },
+                { Country: '355', Value: '1399' },
+                { Country: '356', Value: '1406' },
+                { Country: '357', Value: '1411' },
+                { Country: '358', Value: '1417' },
+                { Country: '359', Value: '1412' },
+                { Country: '360', Value: '1411' },
+                { Country: '361', Value: '1415' },
+                { Country: '362', Value: '1403' },
+                { Country: '363', Value: '1397' },
+                { Country: '364', Value: '1392' },
+                { Country: '365', Value: '1409' },
+                { Country: '366', Value: '1415' },
+                { Country: '367', Value: '1421' },
+                { Country: '368', Value: '1396' },
+                { Country: '369', Value: '1416' },
+                { Country: '370', Value: '1421' },
+                { Country: '371', Value: '1403' },
+                { Country: '372', Value: '1413' },
+                { Country: '373', Value: '1420' },
+                { Country: '374', Value: '1426' },
+                { Country: '375', Value: '1432' },
+                { Country: '376', Value: '1398' },
+                { Country: '377', Value: '1438' },
+                { Country: '378', Value: '1432' },
+                { Country: '379', Value: '1404' },
+                { Country: '380', Value: '1056' },
+                { Country: '381', Value: '1404' },
+                { Country: '382', Value: '1370' },
+                { Country: '383', Value: '1395' },
+                { Country: '384', Value: '1322' },
+                { Country: '385', Value: '1425' },
+                { Country: '386', Value: '1409' },
+                { Country: '387', Value: '1426' },
+                { Country: '388', Value: '1431' },
+                { Country: '389', Value: '1426' },
+                { Country: '390', Value: '1432' },
+                { Country: '391', Value: '1427' },
+                { Country: '392', Value: '1432' },
+                { Country: '393', Value: '1426' },
+                { Country: '394', Value: '1420' },
+                { Country: '395', Value: '1402' },
+                { Country: '396', Value: '1395' },
+                { Country: '397', Value: '1414' },
+                { Country: '398', Value: '1420' },
+                { Country: '399', Value: '1413' },
+                { Country: '400', Value: '1419' },
+                { Country: '401', Value: '1413' },
+                { Country: '402', Value: '1408' },
+                { Country: '403', Value: '1414' },
+                { Country: '404', Value: '1420' },
+                { Country: '405', Value: '1426' },
+                { Country: '406', Value: '1431' },
+                { Country: '407', Value: '1436' },
+                { Country: '408', Value: '1442' },
+                { Country: '409', Value: '1448' },
+                { Country: '410', Value: '1448' },
+                { Country: '411', Value: '1454' },
+                { Country: '412', Value: '1449' },
+                { Country: '413', Value: '1471' },
+                { Country: '414', Value: '1495' },
+                { Country: '415', Value: '1514' },
+                { Country: '416', Value: '1534' },
+                { Country: '417', Value: '1547' },
+                { Country: '418', Value: '1563' },
+                { Country: '419', Value: '1373' },
+                { Country: '420', Value: '1581' },
+                { Country: '421', Value: '1448' },
+                { Country: '422', Value: '1597' },
+                { Country: '423', Value: '1576' },
+                { Country: '424', Value: '1587' },
+                { Country: '425', Value: '1575' },
+                { Country: '426', Value: '1454' },
+                { Country: '427', Value: '1460' },
+                { Country: '428', Value: '1455' },
+                { Country: '429', Value: '1461' },
+                { Country: '430', Value: '1466' },
+                { Country: '431', Value: '1461' },
+                { Country: '432', Value: '1455' },
+                { Country: '433', Value: '1402' },
+                { Country: '434', Value: '1408' },
+                { Country: '435', Value: '1449' },
+                { Country: '436', Value: '1444' },
+                { Country: '437', Value: '1415' },
+                { Country: '438', Value: '1409' },
+                { Country: '439', Value: '1415' },
+                { Country: '440', Value: '1420' },
+                { Country: '441', Value: '1561' },
+                { Country: '442', Value: '1547' },
+                { Country: '443', Value: '1415' },
+                { Country: '444', Value: '1449' },
+                { Country: '445', Value: '1443' },
+                { Country: '446', Value: '1420' },
+                { Country: '447', Value: '1421' },
+                { Country: '448', Value: '1443' },
+                { Country: '449', Value: '1448' },
+                { Country: '450', Value: '1455' },
+                { Country: '451', Value: '1461' },
+                { Country: '452', Value: '1467' },
+                { Country: '453', Value: '1473' },
+                { Country: '454', Value: '1480' },
+                { Country: '455', Value: '1474' },
+                { Country: '456', Value: '1480' },
+                { Country: '457', Value: '1474' },
+                { Country: '458', Value: '1468' },
+                { Country: '459', Value: '1463' },
+                { Country: '460', Value: '1468' },
+                { Country: '461', Value: '1462' },
+                { Country: '462', Value: '1468' },
+                { Country: '463', Value: '1463' },
+                { Country: '464', Value: '1468' },
+                { Country: '465', Value: '1427' },
+                { Country: '466', Value: '1420' },
+                { Country: '467', Value: '1463' },
+                { Country: '468', Value: '1457' },
+                { Country: '469', Value: '1416' },
+                { Country: '470', Value: '1410' },
+                { Country: '471', Value: '1404' },
+                { Country: '472', Value: '1410' },
+                { Country: '473', Value: '1416' },
+                { Country: '474', Value: '1422' },
+                { Country: '475', Value: '1452' },
+                { Country: '476', Value: '1458' },
+                { Country: '477', Value: '1452' },
+                { Country: '478', Value: '1447' },
+                { Country: '479', Value: '1560' },
+                { Country: '480', Value: '1571' },
+                { Country: '481', Value: '1416' },
+                { Country: '482', Value: '1440' },
+                { Country: '483', Value: '1445' },
+                { Country: '484', Value: '1444' },
+                { Country: '485', Value: '1450' },
+                { Country: '486', Value: '1561' },
+                { Country: '487', Value: '1573' },
+                { Country: '488', Value: '1446' },
+                { Country: '489', Value: '1439' },
+                { Country: '490', Value: '1585' },
+                { Country: '491', Value: '1446' },
+                { Country: '492', Value: '1452' },
+                { Country: '493', Value: '1457' },
+                { Country: '494', Value: '1451' },
+                { Country: '495', Value: '1423' },
+                { Country: '496', Value: '1429' },
+                { Country: '497', Value: '1445' },
+                { Country: '498', Value: '1445' },
+                { Country: '499', Value: '1452' },
+                { Country: '500', Value: '1435' },
+                { Country: '501', Value: '1595' },
+                { Country: '502', Value: '1444' },
+                { Country: '503', Value: '1439' },
+                { Country: '504', Value: '1585' },
+                { Country: '505', Value: '1444' },
+                { Country: '506', Value: '1439' },
+                { Country: '507', Value: '1434' },
+                { Country: '508', Value: '1429' },
+                { Country: '509', Value: '1575' },
+                { Country: '510', Value: '1424' },
+                { Country: '511', Value: '1418' },
+                { Country: '512', Value: '1412' },
+                { Country: '513', Value: '1419' },
+                { Country: '514', Value: '1424' },
+                { Country: '515', Value: '1430' },
+                { Country: '516', Value: '1434' },
+                { Country: '517', Value: '1441' },
+                { Country: '518', Value: '1446' },
+                { Country: '519', Value: '1452' },
+                { Country: '520', Value: '1406' },
+                { Country: '521', Value: '1458' },
+                { Country: '522', Value: '1452' },
+                { Country: '523', Value: '1458' },
+                { Country: '524', Value: '1453' },
+                { Country: '525', Value: '1564' },
+                { Country: '526', Value: '1459' },
+                { Country: '527', Value: '1465' },
+                { Country: '528', Value: '1459' },
+                { Country: '529', Value: '1577' },
+                { Country: '530', Value: '1459' },
+                { Country: '531', Value: '1452' },
+                { Country: '532', Value: '1429' },
+                { Country: '533', Value: '1446' },
+                { Country: '534', Value: '1452' },
+                { Country: '535', Value: '1446' },
+                { Country: '536', Value: '1452' },
+                { Country: '537', Value: '1445' },
+                { Country: '538', Value: '1450' },
+                { Country: '539', Value: '1566' },
+                { Country: '540', Value: '1555' },
+                { Country: '541', Value: '1566' },
+                { Country: '542', Value: '1455' },
+                { Country: '543', Value: '1449' },
+                { Country: '544', Value: '1455' },
+                { Country: '545', Value: '1455' },
+                { Country: '546', Value: '1449' },
+                { Country: '547', Value: '1455' },
+                { Country: '548', Value: '1450' },
+                { Country: '549', Value: '1455' },
+                { Country: '550', Value: '1461' },
+                { Country: '551', Value: '1467' },
+                { Country: '552', Value: '1472' },
+                { Country: '553', Value: '1471' },
+                { Country: '554', Value: '1475' },
+                { Country: '555', Value: '1481' },
+                { Country: '556', Value: '1474' },
+                { Country: '557', Value: '1480' },
+                { Country: '558', Value: '1486' },
+                { Country: '559', Value: '1486' },
+                { Country: '560', Value: '1492' },
+                { Country: '561', Value: '1487' },
+                { Country: '562', Value: '1492' },
+                { Country: '563', Value: '1485' },
+                { Country: '564', Value: '1435' },
+                { Country: '565', Value: '1429' },
+                { Country: '566', Value: '1436' },
+                { Country: '567', Value: '1442' },
+                { Country: '568', Value: '1448' },
+                { Country: '569', Value: '1443' },
+                { Country: '570', Value: '1447' },
+                { Country: '571', Value: '1441' },
+                { Country: '572', Value: '1555' },
+                { Country: '573', Value: '1479' },
+                { Country: '574', Value: '1485' },
+                { Country: '575', Value: '1490' },
+                { Country: '576', Value: '1485' },
+                { Country: '577', Value: '1480' },
+                { Country: '578', Value: '1486' },
+                { Country: '579', Value: '1492' },
+                { Country: '580', Value: '1498' },
+                { Country: '581', Value: '1565' },
+                { Country: '582', Value: '1359' },
+                { Country: '583', Value: '1447' },
+                { Country: '584', Value: '1453' },
+                { Country: '585', Value: '1459' },
+                { Country: '586', Value: '1505' },
+                { Country: '587', Value: '1511' },
+                { Country: '588', Value: '1503' },
+                { Country: '589', Value: '1508' },
+                { Country: '590', Value: '1508' },
+                { Country: '591', Value: '1515' },
+                { Country: '592', Value: '1520' },
+                { Country: '593', Value: '1525' },
+                { Country: '594', Value: '1520' },
+                { Country: '595', Value: '1515' },
+                { Country: '596', Value: '1516' },
+                { Country: '597', Value: '1510' },
+                { Country: '598', Value: '1505' },
+                { Country: '599', Value: '1510' },
+                { Country: '600', Value: '1515' },
+                { Country: '601', Value: '1520' },
+                { Country: '602', Value: '1526' },
+                { Country: '603', Value: '1532' },
+                { Country: '604', Value: '1536' },
+                { Country: '605', Value: '1541' },
+                { Country: '606', Value: '1536' },
+                { Country: '607', Value: '1531' },
+                { Country: '608', Value: '1537' },
+                { Country: '609', Value: '1531' },
+                { Country: '610', Value: '1537' },
+                { Country: '611', Value: '1543' },
+                { Country: '612', Value: '1465' },
+                { Country: '613', Value: '1459' },
+                { Country: '614', Value: '1465' },
+                { Country: '615', Value: '1471' },
+                { Country: '616', Value: '1464' },
+                { Country: '617', Value: '1459' },
+                { Country: '618', Value: '1463' },
+                { Country: '619', Value: '1538' },
+                { Country: '620', Value: '1544' },
+                { Country: '621', Value: '1550' },
+                { Country: '622', Value: '1556' },
+                { Country: '623', Value: '1552' },
+                { Country: '624', Value: '1546' },
+                { Country: '625', Value: '1553' },
+                { Country: '626', Value: '1547' },
+                { Country: '627', Value: '1540' },
+                { Country: '628', Value: '1546' },
+                { Country: '629', Value: '1551' },
+                { Country: '630', Value: '1557' },
+                { Country: '631', Value: '1551' },
+                { Country: '632', Value: '1556' },
+                { Country: '633', Value: '1551' },
+                { Country: '634', Value: '1574' },
+                { Country: '635', Value: '1584' },
+                { Country: '636', Value: '1556' },
+                { Country: '637', Value: '1550' },
+                { Country: '638', Value: '1556' },
+                { Country: '639', Value: '1562' },
+                { Country: '640', Value: '1459' },
+                { Country: '641', Value: '1557' },
+                { Country: '642', Value: '1553' },
+                { Country: '643', Value: '1547' },
+                { Country: '644', Value: '1553' },
+                { Country: '645', Value: '1547' },
+                { Country: '646', Value: '1575' },
+                { Country: '647', Value: '1553' },
+                { Country: '648', Value: '1558' },
+                { Country: '649', Value: '1006' },
+                { Country: '650', Value: '1090' },
+                { Country: '651', Value: '1129' },
+                { Country: '652', Value: '1103' },
+                { Country: '653', Value: '1130' },
+                { Country: '654', Value: '1161' },
+                { Country: '655', Value: '1559' },
+                { Country: '656', Value: '1563' },
+                { Country: '657', Value: '1569' },
+                { Country: '658', Value: '1575' },
+                { Country: '659', Value: '1569' },
+                { Country: '660', Value: '1453' },
+                { Country: '661', Value: '1459' },
+                { Country: '662', Value: '1455' },
+                { Country: '663', Value: '1449' },
+                { Country: '664', Value: '1444' },
+                { Country: '665', Value: '1440' },
+                { Country: '666', Value: '1564' },
+                { Country: '667', Value: '1558' },
+                { Country: '668', Value: '1558' },
+                { Country: '669', Value: '1553' },
+                { Country: '670', Value: '1547' },
+                { Country: '671', Value: '1541' },
+                { Country: '672', Value: '1535' },
+                { Country: '673', Value: '1530' },
+                { Country: '674', Value: '1577' },
+                { Country: '675', Value: '1531' },
+                { Country: '676', Value: '1536' },
+                { Country: '677', Value: '1543' },
+                { Country: '678', Value: '1445' },
+                { Country: '679', Value: '1547' },
+                { Country: '680', Value: '1553' },
+                { Country: '681', Value: '1559' },
+                { Country: '682', Value: '1451' },
+                { Country: '683', Value: '1554' },
+                { Country: '684', Value: '1559' },
+                { Country: '685', Value: '1564' },
+                { Country: '686', Value: '1570' },
+                { Country: '687', Value: '1565' },
+                { Country: '688', Value: '1559' },
+                { Country: '689', Value: '1553' },
+                { Country: '690', Value: '1547' },
+                { Country: '691', Value: '1554' },
+                { Country: '692', Value: '1567' },
+                { Country: '693', Value: '1452' },
+                { Country: '694', Value: '1446' },
+                { Country: '695', Value: '1560' },
+                { Country: '696', Value: '1566' },
+                { Country: '697', Value: '1560' },
+                { Country: '698', Value: '1441' },
+                { Country: '699', Value: '1566' },
+                { Country: '700', Value: '1561' },
+                { Country: '701', Value: '1555' },
+                { Country: '702', Value: '1559' },
+                { Country: '703', Value: '1554' },
+                { Country: '704', Value: '1549' },
+                { Country: '705', Value: '1548' },
+                { Country: '706', Value: '1553' },
+                { Country: '707', Value: '1548' },
+                { Country: '708', Value: '1554' },
+                { Country: '709', Value: '1561' },
+                { Country: '710', Value: '1556' },
+                { Country: '711', Value: '1562' },
+                { Country: '712', Value: '1568' },
+                { Country: '713', Value: '1561' },
+                { Country: '714', Value: '1556' },
+                { Country: '715', Value: '1567' },
+                { Country: '716', Value: '1557' },
+                { Country: '717', Value: '1549' },
+                { Country: '718', Value: '1558' },
+                { Country: '719', Value: '1570' },
+                { Country: '720', Value: '1557' },
+                { Country: '721', Value: '1546' },
+                { Country: '722', Value: '1536' },
+                { Country: '723', Value: '1447' },
+                { Country: '724', Value: '1433' },
+                { Country: '725', Value: '1445' },
+                { Country: '726', Value: '1526' },
+                { Country: '727', Value: '1536' },
+                { Country: '728', Value: '1526' },
+                { Country: '729', Value: '1516' },
+                { Country: '730', Value: '1507' },
+                { Country: '731', Value: '1523' },
+                { Country: '732', Value: '1449' },
+                { Country: '733', Value: '1464' },
+                { Country: '734', Value: '1452' },
+                { Country: '735', Value: '1511' },
+                { Country: '736', Value: '1510' },
+                { Country: '737', Value: '1516' },
+                { Country: '738', Value: '1527' },
+                { Country: '739', Value: '1541' },
+                { Country: '740', Value: '1512' },
+
+            ]
+
+
+            // Add X axis
+            var x = d3.scaleLinear()
+                .domain([0, 1800])
+                .range([0, width]);
+            svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x))
+                .selectAll("text")
+                .attr("transform", "translate(5,0)rotate(-11)")
+                .style("text-anchor", "end")
+                .style("text-size", 15)
+                .style("color", "red");
+
+            // Y axis
+            var y = d3.scaleBand()
+                .range([0, height])
+                .domain(MyData.map(function (d) { return d.Country; }))
+                .padding(1);
+
+            svg.append("g")
+                .call(d3.axisLeft(y))
+
+            // Lines
+            svg.selectAll("myline")
+                .data(MyData)
+                .enter()
+                .append("line")
+                .attr("x1", x(0))
+                .attr("x2", x(0))
+                .attr("y1", function (d) { return y(d.Country); })
+                .attr("y2", function (d) { return y(d.Country); })
+                .attr("stroke", "grey")
+
+            // Circles -> start at X=0
+            svg.selectAll("mycircle")
+                .data(MyData)
+                .enter()
+                .append("circle")
+                .attr("cx", x(0))
+                .attr("cy", function (d) { return y(d.Country); })
+                .attr("r", "7")
+                .style("fill", "black")
+                .attr("stroke", "red")
+
+            // Change the X coordinates of line and circle
+            svg.selectAll("circle")
+                .transition()
+                .duration(2000)
+                .attr("cx", function (d) { return x(d.Value); })
+
+            svg.selectAll("line")
+                .transition()
+                .duration(2000)
+                .attr("x1", function (d) { return x(d.Value); })
+
+        })
+
+    </script>
+</body>
+
+</html>
